@@ -9,31 +9,30 @@ class ProductManager {
     addProduct = async (product) => {
         try {
             const products = await this.getProducts();
-            const id = this.createId();
-            product.id = id;
-
-            products.push(product);
-
+            const id = this.createId(products);
+            const newObject = { title: product.title, description: product.description, price: product.price, thumbnail: product.thumbnail, code: product.code, stock: product.stock, id: id }
+            products.push(newObject);
             await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
             return product;
         } catch (error) {
-            console.log();
+            console.log(error);
         }
 
     }
-    createId() {
-        if (this.products.length === 0) {
+    createId(products) {
+        if (products.length === 0) {
             return 1;
         } else {
-            return this.products[this.products.length - 1].id + 1;
+            return this.products[products.length - 1].id + 1;
         }
     }
 
     getProducts = async () => {
         try {
             if (fs.existsSync(this.path)) {
-                const data = await fs.promises.readFile(this.path, 'utf-8');
-                return JSON.parse(data);
+                const result = await fs.promises.readFile(this.path, 'utf-8');
+                const data = await JSON.parse(result);
+                return data;
             } else {
                 return [];
             }
@@ -57,17 +56,20 @@ class ProductManager {
 
     }
 
-    updateProduct = async (id, object) => {
+    updateProduct = async (id, product) => {
         try {
             if (isNaN(id)) throw new Error("El id ingresado es inválido");
 
-            let data = [];
-            const newObject = { title: object.title, price: object.price, thumbnail: object.thumbnail, id: id }
-            data.push(newObject);
-            await fs.promises.appendFile(this.fileName, JSON.stringify(data));
+            const data = await this.getProducts();
+            const objectFound = data.find(x => x.id === id);
+            if (objectFound) {
+                const newObject = { title: product.title, description: product.description, price: product.price, thumbnail: product.thumbnail, code: product.code, stock: product.stock, id: id }
+                data[newObject.id-1] = newObject;
+                await fs.promises.writeFile(this.path, JSON.stringify(data, null, '\t'));
+            } 
            
         } catch (error) {
-            console.log();
+            console.log(error);
         }
 
     }
@@ -81,14 +83,14 @@ class ProductManager {
             if (objectFound) {
                 const newData = data.filter(x => x.id !== id);
 
-                await fs.promises.writeFile(this.fileName, JSON.stringify(newData));
+                await fs.promises.writeFile(this.path, JSON.stringify(newData));
 
             } else {
                 throw new Error("El id ingresado no existe.");
             }
         }
         catch (error) {
-            throw new Error(error);
+            console.log(error);
         }
     }
 }
