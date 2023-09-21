@@ -1,0 +1,95 @@
+[
+    {
+      "title": "Product 1",
+      "description": "Product 1 description",
+      "price": 100,
+      "thumbnail": "image1.png",
+      "code": "1234",
+      "stock": 10,
+      "id": "1"
+    },
+    {
+      "title": "Product 2",
+      "description": "Product 2 description",
+      "price": 200,
+      "thumbnail": "image2.png",
+      "code": "1234",
+      "stock": 20,
+      "id": "2"
+    },
+    {
+      "title": "Product 3",
+      "description": "Product 3 description",
+      "price": 300,
+      "thumbnail": "image3.png",
+      "code": "1234",
+      "stock": 30,
+      "id": "3"
+    },
+    {
+        "title": "Product 4",
+        "description": "Product 4 description",
+        "price": 300,
+        "thumbnail": "image4.png",
+        "code": "1234",
+        "stock": 40,
+        "id": "4"
+      },
+      {
+        "title": "Product 5",
+        "description": "Product 5 description",
+        "price": 500,
+        "thumbnail": "image5.png",
+        "code": "1234",
+        "stock": 50,
+        "id": "5"
+      },
+      {
+        "title": "Product 6",
+        "description": "Product 6 description",
+        "price": 600,
+        "thumbnail": "image6.png",
+        "code": "1234",
+        "stock": 60,
+        "id": "6"
+      },
+      {
+        "title": "Product 7",
+        "description": "Product 7 description",
+        "price": 700,
+        "thumbnail": "image7.png",
+        "code": "1234",
+        "stock": 70,
+        "id": "7"
+      },
+      {
+        "title": "Product 8",
+        "description": "Product 8 description",
+        "price": 800,
+        "thumbnail": "image8.png",
+        "code": "1234",
+        "stock": 80,
+        "id": "8"
+      }
+      ,
+      {
+        "title": "Product 9",
+        "description": "Product 9 description",
+        "price": 900,
+        "thumbnail": "image9.png",
+        "code": "1234",
+        "stock": 90,
+        "id": "9"
+      }
+      ,
+      {
+        "title": "Product 10",
+        "description": "Product 10 description",
+        "price": 1000,
+        "thumbnail": "image10.png",
+        "code": "1234",
+        "stock": 100,
+        "id": "10"
+      }
+  ]
+
